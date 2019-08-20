@@ -27,5 +27,11 @@ RSpec.describe ArticlesController, type: :controller do
       expect(json_data.first['id']).to eq newer_article.id.to_s
       expect(json_data.last['id']).to eq old_article.id.to_s
     end
+
+    it 'should paginate result' do
+      get :index, params: { page: 2, per_page: 1 }
+      expect(json_data.size).to eq 1
+      expect(json_data.first['id']).to eq(Article.recent.second.id.to_s)
+    end
   end
 end
