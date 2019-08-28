@@ -9,7 +9,7 @@ class UserAuthenticator
   end
 
   def perform
-    if token.try(:error).present?
+    if @code.blank? || token.try(:error).present?
       raise AuthenticationError
     else
       prepare_user
