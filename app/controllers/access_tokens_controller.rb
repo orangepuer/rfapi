@@ -7,5 +7,6 @@ class AccessTokensController < ApplicationController
   end
 
   def destroy
+    raise AuthorizationError
   end
 end

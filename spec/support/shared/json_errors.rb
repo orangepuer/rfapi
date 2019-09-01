@@ -18,3 +18,24 @@ shared_examples_for 'unauthorized_requests' do
     expect(json['errors']).to include(error)
   end
 end
+
+shared_examples_for 'forbidden_requests' do
+  let(:authentication_error) do
+    {
+        status: "403",
+        source: { pointer: "/header/authorization" },
+        title: "Not authorized",
+        detail: "You have no right to access this resource."
+    }.as_json
+  end
+
+  it 'should return 403 status code' do
+    subject
+    expect(response).to have_http_status :forbidden
+  end
+
+  it 'should return proper error json' do
+    subject
+    expect(json['errors']).to include(authentication_error)
+  end
+end
