@@ -3,5 +3,6 @@ FactoryBot.define do
     sequence(:title) { |n| "My article #{ n }" }
     sequence(:content) { |n| "Content of my article #{ n }" }
     sequence(:slug) { |n| "my-article-#{ n }" }
+    user
   end
 end
