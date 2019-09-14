@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
   before_action :set_article
 
   def index
-    @comments = Comment.all
+    comments = @article.comments
 
-    render json: @comments
+    render json: comments
   end
 
   def create
