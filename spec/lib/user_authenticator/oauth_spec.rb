@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UserAuthenticator do
+describe UserAuthenticator::Oauth do
   describe '#perform' do
     let(:authenticator) { described_class.new('sample_code') }
     subject { authenticator.perform }
@@ -11,7 +11,7 @@ describe UserAuthenticator do
       before { allow_any_instance_of(Octokit::Client).to receive(:exchange_code_for_token).and_return(error) }
 
       it 'should raise an error' do
-        expect{ subject }.to raise_error(UserAuthenticator::AuthenticationError)
+        expect{ subject }.to raise_error(UserAuthenticator::Oauth::AuthenticationError)
         expect(authenticator.user).to be_nil
       end
     end
