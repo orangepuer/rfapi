@@ -5,7 +5,7 @@ class UserAuthenticator
     if code.present?
       @authenticator = Oauth.new(code)
     else
-      @authenticator = Standard.new(login: login, password: password)
+      @authenticator = Standard.new(login, password)
     end
   end
 
