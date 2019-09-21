@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_102531) do
+ActiveRecord::Schema.define(version: 2019_09_20_114506) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.string "token", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_09_10_102531) do
     t.string "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password"
   end
 
 end
