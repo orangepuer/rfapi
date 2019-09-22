@@ -30,6 +30,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'oj'
 gem 'kaminari'
 gem "octokit", "~> 4.0"
+gem 'bcrypt'
 
 group :production do
   gem 'pg'
