@@ -2,7 +2,7 @@ class UserAuthenticator::Oauth < UserAuthenticator
   class AuthenticationError < StandardError
   end
 
-  attr_reader :user, :access_token
+  attr_reader :user
 
   def initialize(code)
     @code = code
