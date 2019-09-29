@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :access_token, dependent: :destroy
 
   validates :login, :provider, presence: true
+  validates :password, presence: true, if: -> { provider == 'standard' }
   validates :login, uniqueness: true
 
   def password
@@ -13,6 +14,7 @@ class User < ApplicationRecord
   end
 
   def password=(new_password)
+    return @password = new_password if new_password.blank?
     @password = Password.create(new_password)
     self.encrypted_password = @password
   end
